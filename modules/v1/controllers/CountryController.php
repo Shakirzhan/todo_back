@@ -2,7 +2,9 @@
 
 namespace app\modules\v1\controllers;
 
-class CountryController extends \yii\web\Controller
+use yii\web\Controller;
+
+class CountryController extends Controller
 {
     public $modelClass = 'app\modules\v1\models\Country';
 

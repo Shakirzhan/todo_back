@@ -7,6 +7,6 @@ use yii\rest\ActiveController;
 
 class CountryController extends ActiveController
 {
-    public $modelClass = 'app\models\country';
+    public $modelClass = 'app\modules\v1\models\Country';
 
 }
