@@ -13,7 +13,8 @@ $config = [
     ],
     'modules' => [
         'v1' => [
-            'class' => '\app\modules\v1\Module',
+            'basePath' => '@app/modules/v1',
+            'class' => 'app\modules\v1\Module'
         ]
     ],
     'components' => [
@@ -61,6 +62,9 @@ $config = [
                     'class' => \yii\rest\UrlRule::class,
                     'controller' => ['v1/country'],
                     'prefix' => 'api',
+                    'extraPatterns' => [
+                        'GET /' => 'random',
+                    ]
                 ]
             ],
         ]

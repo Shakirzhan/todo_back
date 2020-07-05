@@ -2,10 +2,21 @@
 
 namespace app\modules\v1\controllers;
 
-use yii\web\Controller;
+use yii\rest\ActiveController;
 
-class CountryController extends Controller
+/**
+ * Country Controller API
+ *
+ * @author Budi Irawan <deerawan@gmail.com>
+ */
+class CountryController extends ActiveController
 {
     public $modelClass = 'app\modules\v1\models\Country';
 
+    public function actionRandom()
+    {
+        return 'random';
+    }
 }
+
+
