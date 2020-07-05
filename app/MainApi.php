@@ -72,6 +72,40 @@ class MainApi extends Api
             }
         });
 
+        $router->post("{$this->apiName}/user/main_authorization", function () {
+            $post = json_decode(file_get_contents("php://input"));
+
+            $user = new User($this->conn);
+
+            $user->login = $post->login;
+            $login_exists = $user->loginExists();
+
+            if ( $login_exists && password_verify($post->password, $user->password) ) {
+
+                $token = array(
+                    "iss" => $iss,
+                    "aud" => $aud,
+                    "iat" => $iat,
+                    "nbf" => $nbf,
+                    "data" => array(
+                        "id" => $user->id,
+                        "login" => $user->login
+                    )
+                );
+
+                $jwt = JWT::encode($token, $key);
+                echo $this->response(array(
+                    "message" => "Успешный вход в систему.",
+                    "jwt" => $jwt
+                ), 200);
+                return;
+
+            } else {
+                echo $this->response(array("message" => "Ошибка входа."), 401);
+                return;
+            }
+        });
+
         $router->run();
 
     }
