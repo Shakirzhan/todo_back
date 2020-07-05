@@ -10,8 +10,13 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-        '@api' => dirname(dirname(__DIR__)) . '/api'
+        '@app' => dirname(dirname(__DIR__)) . '/'
     ],
+//    'modules' => [
+//        'v1' => [
+//            'class' => 'app\modules\v1\Module',
+//        ]
+//    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -55,21 +60,14 @@ $config = [
             'rules' => [
                 [
                     'class' => \yii\rest\UrlRule::class,
-                    'controller' => ['country'],
+                    'controller' => ['v1/country'],
                     'prefix' => 'api',
-                    'extraPatterns' => [
-                        'GET /' => 'index',
-                    ]
                 ]
             ],
         ]
 
     ],
-    'modules' => [
-        'admin' => [
-            'class' => 'app\modules\admin\Module',
-        ],
-    ],
+
     'params' => $params,
 ];
 
