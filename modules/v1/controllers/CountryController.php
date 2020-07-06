@@ -2,14 +2,10 @@
 
 namespace app\modules\v1\controllers;
 
-use yii\rest\ActiveController;
 
-/**
- * Country Controller API
- *
- * @author Budi Irawan <deerawan@gmail.com>
- */
-class CountryController extends ActiveController
+use yii\rest\Controller;
+
+class CountryController extends Controller
 {
     public $modelClass = 'app\modules\v1\models\Country';
 

@@ -52,7 +52,7 @@ $config = [
             ],
         ],
         'db' => $db,
-
+       /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'enableStrictParsing' => true,
@@ -68,7 +68,16 @@ $config = [
                 ]
             ],
         ]
-
+        */
+        'urlManager'   => [
+            'enablePrettyUrl' => true,
+            'enableStrictParsing' => true,
+            'showScriptName'  => false,
+            'rules'           => [
+                'POST api/reg' => 'v1/user/reg',
+                'POST api/auth' => 'v1/user/auth'
+            ],
+        ]
     ],
 
     'params' => $params,
