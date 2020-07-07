@@ -32,9 +32,6 @@ $config = [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
@@ -74,8 +71,22 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName'  => false,
             'rules'           => [
+                'GET api/random' => 'v1/country/random',
                 'POST api/reg' => 'v1/user/reg',
-                'POST api/auth' => 'v1/user/auth'
+                'POST api/auth' => 'v1/user/auth',
+
+                'api/auth' => 'v1/user/options',
+
+
+
+
+                'PUT,PATCH users/<id>' => 'user/update',
+                'DELETE users/<id>' => 'user/delete',
+                'GET,HEAD users/<id>' => 'user/view',
+                'POST users' => 'user/create',
+                'GET,HEAD users' => 'user/index',
+                'users/<id>' => 'user/options',
+                'users' => 'user/options',
             ],
         ]
     ],

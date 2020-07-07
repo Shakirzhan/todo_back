@@ -3,9 +3,7 @@
 namespace app\modules\v1\controllers;
 
 
-use yii\rest\Controller;
-
-class CountryController extends Controller
+class CountryController extends ApiController
 {
     public $modelClass = 'app\modules\v1\models\Country';
 

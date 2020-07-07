@@ -5,10 +5,9 @@ namespace app\modules\v1\controllers;
 
 use app\modules\v1\forms\LoginForm;
 use app\modules\v1\forms\RegForm;
-use yii\rest\Controller;
 use Yii;
 
-class UserController extends Controller
+class UserController extends ApiController
 {
     public $modelClass = 'app\modules\v1\models\User';
 
