@@ -4,89 +4,60 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'basic',
-    'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
-    'aliases' => [
+    'id'         => 'basic',
+    'basePath'   => dirname(__DIR__),
+    'bootstrap'  => ['log'],
+    'aliases'    => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
-    'modules' => [
+    'modules'    => [
         'v1' => [
             'basePath' => '@app/modules/v1',
-            'class' => 'app\modules\v1\Module'
+            'class'    => 'app\modules\v1\Module'
         ]
     ],
     'components' => [
-        'request' => [
+        'request'    => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '6OEWIM5AZR3IZMBj4tbBiNukoNy3N_9Y',
-            'parsers' => [
+            'parsers'             => [
                 'application/json' => 'yii\web\JsonParser',
             ]
         ],
-        'cache' => [
+        'cache'      => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
+        'user'       => [
+            'identityClass'   => 'app\models\User',
             'enableAutoLogin' => true,
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
+        'mailer'     => [
+            'class'            => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
-        'log' => [
+        'log'        => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
+            'targets'    => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class'  => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
             ],
         ],
-        'db' => $db,
-       /*
+        'db'         => $db,
         'urlManager' => [
-            'enablePrettyUrl' => true,
+            'enablePrettyUrl'     => true,
             'enableStrictParsing' => true,
-            'showScriptName' => false,
-            'rules' => [
-                [
-                    'class' => \yii\rest\UrlRule::class,
-                    'controller' => ['v1/country'],
-                    'prefix' => 'api',
-                    'extraPatterns' => [
-                        'GET /' => 'random',
-                    ]
-                ]
-            ],
-        ]
-        */
-        'urlManager'   => [
-            'enablePrettyUrl' => true,
-            'enableStrictParsing' => true,
-            'showScriptName'  => false,
-            'rules'           => [
+            'showScriptName'      => false,
+            'rules'               => [
                 'GET api/random' => 'v1/country/random',
-                'POST api/reg' => 'v1/user/reg',
-                'POST api/auth' => 'v1/user/auth',
-
-                'api/auth' => 'v1/user/options',
-
-
-
-
-                'PUT,PATCH users/<id>' => 'user/update',
-                'DELETE users/<id>' => 'user/delete',
-                'GET,HEAD users/<id>' => 'user/view',
-                'POST users' => 'user/create',
-                'GET,HEAD users' => 'user/index',
-                'users/<id>' => 'user/options',
-                'users' => 'user/options',
+                'POST api/reg'   => 'v1/user/reg',
+                'POST api/auth'  => 'v1/user/auth',
+                'api/auth'       => 'v1/user/options',
             ],
         ]
     ],
@@ -105,7 +76,7 @@ if (YII_ENV_DEV) {
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
-        'class' => 'yii\gii\Module',
+        'class'      => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         'allowedIPs' => ['127.0.0.1', '::1', '*'],
     ];
