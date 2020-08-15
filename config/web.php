@@ -29,8 +29,10 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user'       => [
-            'identityClass'   => 'app\models\User',
-            'enableAutoLogin' => true,
+            'identityClass'   => 'app\modules\v1\models\user',
+            'loginUrl'        => null,
+            'enableAutoLogin' => false,
+            'enableSession'   => true
         ],
         'mailer'     => [
             'class'            => 'yii\swiftmailer\Mailer',
@@ -54,11 +56,14 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName'      => false,
             'rules'               => [
-                'GET api/list' => 'v1/main-list/do-list',
-                'POST api/reg'   => 'v1/user/reg',
-                'POST api/auth'  => 'v1/user/auth',
-                'api/auth'       => 'v1/user/options',
-            ],
+                'GET api/list'         => 'v1/main-list/do-list',
+                'POST api/create-item' => 'v1/main-list/create-item',
+                'POST api/reg'         => 'v1/user/reg',
+                'POST api/auth'        => 'v1/user/auth',
+                'api/auth'             => 'v1/user/options',
+                'api/create-item'      => 'v1/main-list/options',
+                'OPTIONS api/list'     => 'v1/main-list/options'
+            ]
         ]
     ],
 

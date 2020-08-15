@@ -3,8 +3,8 @@
 namespace app\modules\v1\controllers;
 
 
-use yii\filters\Cors;
-use yii\helpers\ArrayHelper;
+use yii\filters\AccessControl;
+use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 
 class ApiController extends ActiveController
@@ -13,6 +13,11 @@ class ApiController extends ActiveController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
+
+        $behaviors['authenticator'] = [
+            'class' => HttpBearerAuth::class
+        ];
+
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::class,
             'cors' => [
@@ -31,6 +36,7 @@ class ApiController extends ActiveController
                 'Access-Control-Expose-Headers' => ['*'],
             ],
         ];
+
         return $behaviors;
     }
 
