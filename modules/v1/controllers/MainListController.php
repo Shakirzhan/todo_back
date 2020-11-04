@@ -5,11 +5,15 @@ namespace app\modules\v1\controllers;
 
 use app\modules\v1\models\MainList;
 use Yii;
-use yii\filters\auth\HttpBearerAuth;
 
 class MainListController extends ApiController
 {
     public $modelClass = 'app\modules\v1\models\MainList';
+
+    public function behaviors()
+    {
+        return parent::behaviors();
+    }
 
     public function actionDoList()
     {

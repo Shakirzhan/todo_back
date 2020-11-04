@@ -24,7 +24,7 @@ class ApiController extends ActiveController
                 // Allow  methods
                 'Access-Control-Request-Method' => ['POST', 'PUT', 'OPTIONS', 'GET'],
                 // Allow only headers 'X-Wsse'
-                'Access-Control-Request-Headers' => ['Authorization'],
+                'Access-Control-Request-Headers' => ['*'],
                 'Access-Control-Allow-Headers' => ['*'],
                 // Allow credentials (cookies, authorization headers, etc.) to be exposed to the browser
                 //'Access-Control-Allow-Credentials' => true,
