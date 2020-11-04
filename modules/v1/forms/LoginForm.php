@@ -52,10 +52,7 @@ class LoginForm extends Model
     public function auth()
     {
         if ($this->validate()) {
-            $token = new Token();
-            $token->user_id = $this->getUser()->id;
-            $token->generateToken(time() + 3600 * 24);
-            return $token->save() ? $token : null;
+            return $this->getUser()->access_token;
         } else {
             return null;
         }

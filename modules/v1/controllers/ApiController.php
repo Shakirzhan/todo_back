@@ -2,9 +2,7 @@
 
 namespace app\modules\v1\controllers;
 
-
-use yii\filters\AccessControl;
-use yii\filters\auth\HttpBearerAuth;
+use yii\filters\auth\QueryParamAuth;
 use yii\rest\ActiveController;
 
 class ApiController extends ActiveController
@@ -14,9 +12,9 @@ class ApiController extends ActiveController
     {
         $behaviors = parent::behaviors();
 
-        $behaviors['authenticator'] = [
-            'class' => HttpBearerAuth::class
-        ];
+        $behaviors['authenticator']['class'] = QueryParamAuth::className();
+
+        $behaviors['authenticator']['tokenParam'] = 'hash';
 
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::class,
@@ -26,8 +24,8 @@ class ApiController extends ActiveController
                 // Allow  methods
                 'Access-Control-Request-Method' => ['POST', 'PUT', 'OPTIONS', 'GET'],
                 // Allow only headers 'X-Wsse'
-                'Access-Control-Request-Headers' => ['*'],
-                'Access-Control-Allow-Headers' => ['Content-Type'],
+                'Access-Control-Request-Headers' => ['Authorization'],
+                'Access-Control-Allow-Headers' => ['*'],
                 // Allow credentials (cookies, authorization headers, etc.) to be exposed to the browser
                 //'Access-Control-Allow-Credentials' => true,
                 // Allow OPTIONS caching

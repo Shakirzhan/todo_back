@@ -6,7 +6,7 @@ namespace app\modules\v1\controllers;
 use app\modules\v1\forms\LoginForm;
 use app\modules\v1\forms\RegForm;
 use Yii;
-use yii\filters\AccessControl;
+use yii\filters\auth\QueryParamAuth;
 
 class UserController extends ApiController
 {
@@ -16,15 +16,9 @@ class UserController extends ApiController
     {
         $behaviors = parent::behaviors();
 
-        $behaviors['access'] = [
-            'class' => AccessControl::className(),
-            'rules' => [
-                [
-                    'allow' => true,
-                    'roles' => ['@'],
-                ]
-            ],
-        ];
+        $behaviors['authenticator']['class'] = QueryParamAuth::className();
+
+        $behaviors['authenticator']['only'] = ['post'];
 
         return $behaviors;
     }
