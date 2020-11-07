@@ -13,6 +13,9 @@ use Yii;
  */
 class MainList extends \yii\db\ActiveRecord
 {
+    
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 1;
     /**
      * {@inheritdoc}
      */

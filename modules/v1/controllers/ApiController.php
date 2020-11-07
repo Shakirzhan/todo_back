@@ -22,7 +22,7 @@ class ApiController extends ActiveController
                 // restrict access to
                 'Origin' => ['*'],
                 // Allow  methods
-                'Access-Control-Request-Method' => ['POST', 'PUT', 'OPTIONS', 'GET'],
+                'Access-Control-Request-Method' => ['POST', 'PUT', 'OPTIONS', 'GET', 'DELETE'],
                 // Allow only headers 'X-Wsse'
                 'Access-Control-Request-Headers' => ['*'],
                 'Access-Control-Allow-Headers' => ['*'],

@@ -24,10 +24,11 @@ class MainListController extends ApiController
 
     public function actionDoList()
     {
-        return MainList::find()->all();
+        return MainList::find()->where(['is_deleted' => MainList::STATUS_ACTIVE])->orderBy(['id' => SORT_DESC])->all();
     }
 
-    public function actionCreateItem() {
+    public function actionCreateItem() 
+    {
         $params = Yii::$app->request->bodyParams;
 
         $model = new MainList();
@@ -35,9 +36,22 @@ class MainListController extends ApiController
         $model->name = $params['name'];
 
         $model->user_id = 1;
+        
+        $model->is_deleted = MainList::STATUS_ACTIVE;
 
         $model->save();
 
+        return $model;
+    }
+    
+    public function actionDeletedTask($id) 
+    {
+        $model = MainList::findOne($id);
+        
+        $model->is_deleted = MainList::STATUS_DELETED;
+        
+        $model->save();
+        
         return $model;
     }
 }
