@@ -7,6 +7,7 @@
 
 namespace app\commands;
 
+use app\modules\v1\models\MainList;
 use yii\console\Controller;
 use yii\console\ExitCode;
 
@@ -30,5 +31,15 @@ class HelloController extends Controller
         echo $message . "\n";
 
         return ExitCode::OK;
+    }
+    
+    public function actionRun() {
+        $list = MainList::find()->all();
+        
+        foreach ($list as $task) {
+            $task->is_deleted = MainList::STATUS_ACTIVE;
+            
+            $task->save();
+        }
     }
 }

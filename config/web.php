@@ -58,12 +58,14 @@ $config = [
             'rules' => [
                 'GET api/list' => 'v1/main-list/do-list',
                 'DELETE api/deleted-task/<id:\d+>' => 'v1/main-list/deleted-task',
+                'POST api/deleted-task' => 'v1/main-list/deleted-task-some',
                 'POST api/create-item' => 'v1/main-list/create-item',
                 'POST api/reg' => 'v1/user/reg',
                 'POST api/auth' => 'v1/user/auth',
                 'OPTIONS api/auth' => 'v1/user/options',
                 'OPTIONS api/create-item' => 'v1/main-list/options',
-                'OPTIONS api/deleted-task/<id:\d+>' => 'v1/main-list/deleted-task',
+                'OPTIONS api/deleted-task/<id:\d+>' => 'v1/main-list/options',
+                'OPTIONS api/deleted-task' => 'v1/main-list/options',
                 'OPTIONS api/list' => 'v1/main-list/options'
             ]
         ]

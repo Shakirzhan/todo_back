@@ -54,6 +54,21 @@ class MainListController extends ApiController
         
         return $model;
     }
+    
+    public function actionDeletedTaskSome()
+    {
+        $params = Yii::$app->request->bodyParams['arrayTask'];
+        
+        foreach ($params as $id) {
+            $model = MainList::findOne($id);
+            
+            $model->is_deleted = MainList::STATUS_DELETED;
+            
+            $model->save();
+        }
+        
+        return;
+    }
 }
 
 
