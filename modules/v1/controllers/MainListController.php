@@ -2,9 +2,7 @@
 
 namespace app\modules\v1\controllers;
 
-
 use app\modules\v1\models\MainList;
-use yii\filters\auth\QueryParamAuth;
 use Yii;
 
 class MainListController extends ApiController
@@ -14,10 +12,6 @@ class MainListController extends ApiController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        
-        $behaviors['authenticator']['class'] = QueryParamAuth::className();
-        
-        $behaviors['authenticator']['only'] = ['post'];
         
         return $behaviors;
     }
