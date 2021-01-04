@@ -7,7 +7,7 @@ use yii\db\Migration;
  */
 class m200715_041507_list extends Migration
 {
-    const TABLE_NAME = 'main_list';
+    const TABLE_NAME = 'tasks';
     /**
      * {@inheritdoc}
      */
