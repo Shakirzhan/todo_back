@@ -56,6 +56,7 @@ $config = [
             'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'site/index',
                 'GET api/list' => 'v1/tasks/do-list',
                 'DELETE api/deleted-task/<id:\d+>' => 'v1/tasks/deleted-task',
                 'POST api/deleted-task' => 'v1/tasks/deleted-task-some',
