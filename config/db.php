@@ -6,6 +6,7 @@ return [
     'username' => 'root',
     'password' => 'dfAD1t6hvm20.',
     'charset' => 'utf8',
+    'attributes' => [PDO::ATTR_CASE => PDO::CASE_LOWER],
 
     // Schema cache options (for production environment)
     //'enableSchemaCache' => true,
