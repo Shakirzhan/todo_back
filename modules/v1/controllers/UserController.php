@@ -26,8 +26,7 @@ class UserController extends ApiController
     public function actionReg()
     {
         $model = new RegForm();
-        $model->load(Yii::$app->request->bodyParams, '');
-        if ($result = $model->reg()) {
+        if ($model->load(Yii::$app->request->bodyParams, '') && $result = $model->reg()) {
             return $result;
         } else {
             return $model;
@@ -37,8 +36,7 @@ class UserController extends ApiController
     public function actionAuth()
     {
         $model = new LoginForm();
-        $model->load(Yii::$app->request->bodyParams, '');
-        if ($token = $model->auth()) {
+        if ($model->load(Yii::$app->request->bodyParams, '') && $token = $model->auth()) {
             return $token;
         } else {
             return $model;

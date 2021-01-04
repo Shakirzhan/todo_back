@@ -5,13 +5,13 @@ namespace app\modules\v1\models;
 use Yii;
 
 /**
- * This is the model class for table "main_list".
+ * This is the model class for table "tasks".
  *
  * @property int $id
  * @property string $name
  * @property int $user_id
  */
-class MainList extends \yii\db\ActiveRecord
+class Tasks extends \yii\db\ActiveRecord
 {
     
     const STATUS_DELETED = 0;
@@ -21,7 +21,7 @@ class MainList extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'main_list';
+        return 'tasks';
     }
 
     /**

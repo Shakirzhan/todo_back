@@ -7,7 +7,7 @@
 
 namespace app\commands;
 
-use app\modules\v1\models\MainList;
+use app\modules\v1\models\Tasks;
 use yii\console\Controller;
 use yii\console\ExitCode;
 
@@ -34,10 +34,10 @@ class HelloController extends Controller
     }
     
     public function actionRun() {
-        $list = MainList::find()->all();
+        $list = Tasks::find()->all();
         
         foreach ($list as $task) {
-            $task->is_deleted = MainList::STATUS_ACTIVE;
+            $task->is_deleted = Tasks::STATUS_ACTIVE;
             
             $task->save();
         }
